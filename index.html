@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="port.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root")
+
+    function Navbar() {
+        return (
+            <div id="navbar">
+                <div id="first">
+                    <h1><span class="name">Saurabh Brar</span> <span class="web">| Web Developer</span> </h1>
+                </div>
+                <div id="second">
+                    <a href="#">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        )
+    }
+
+    function About() {
+        return (
+            <div id="about">
+                <div id="about1">
+                    <h1 class="header">About</h1>
+                    <p>Hi, I’m Saurabh Brar, a passionate web developer with a keen eye for
+                        design and a strong foundation in HTML, CSS, and JavaScript.
+                        I specialize in creating dynamic, responsive websites that provide
+                        excellent user experiences. With a background in software development,
+                        I enjoy solving complex problems and continuously learning new technologies.
+                        I'm eager to contribute my skills to innovative projects and collaborate
+                        with talented teams. Explore my portfolio to see some of my recent work
+                        and feel free to get in touch!</p>
+                </div>
+                <div id="about2">
+                    <img src="passport.png" alt="Saurabh Brar" />
+                </div>
+            </div>
+        )
+    }
+
+    function ProjectCard({ name, tech, description }) {
+        return (
+            <div className="project-card">
+                <h2>{name}</h2>
+                <p><strong>Tech:</strong> {tech}</p>
+                <p><strong>Description:</strong></p>
+                <ul>{description.map((desc, index) => <li key={index}>{desc}</li>)}</ul>
+            </div>
+        )
+    }
+
+    function Projects() {
+        const projectData = [
+            {
+                name: "FoodFly",
+                tech: "JavaScript | Git | HTML | CSS",
+                description: [
+                    "Developed a user-friendly interface for simplified online food ordering.",
+                    "Implemented efficient order placement and status tracking features.",
+                    "Enhanced user experience with visual confirmations for order delivery success."
+                ]
+            },
+            {
+                name: "Big Basket Clone",
+                tech: "JavaScript | Git | Responsive Web Design | HTML | CSS",
+                description: [
+                    "Recreated the Big Basket website featuring product categories and promotional banners.",
+                    "Implemented responsive design to ensure seamless usability across devices.",
+                    "Included features for user login, cart functionality, payment options, and order tracking."
+                ]
+            },
+            {
+                name: "Masai Employee Records",
+                tech: "JavaScript | Git | HTML | CSS",
+                description: [
+                    "Developed a responsive web form for managing employee data.",
+                    "Implemented features for adding and managing employee records with fields such as name, ID, department, and contact information.",
+                    "Designed a user-friendly layout to ensure seamless data entry and user experience.",
+                    "Utilized Git and GitHub for version control and collaborative development practices.",
+                    "Ensured the application allowed for clear and organized data management, enhancing user efficiency."
+                ]
+            }
+        ];
+
+        return (
+            <div id="projects">
+                <h1 class="header">Projects</h1>
+                <div id="project-list">
+                    {projectData.map((project, index) => (
+                        <ProjectCard key={index} {...project} />
+                    ))}
+                </div>
+            </div>
+        )
+    }
+
+    function Contact() {
+        return (
+            <div id="contact">
+                <h1 class="header">Contact</h1>
+                <form id="form">
+                    <label>Name:</label>
+                    <input type="text" placeholder="Enter your name" />
+                    <label>Email:</label>
+                    <input type="email" placeholder="Enter your email" />
+                    <label>Message:</label>
+                    <textarea placeholder="Enter your message"></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        )
+    }
+
+    function App() {
+        return (
+            <>
+                <Navbar />
+                <About />
+                <Projects />
+                <Contact />
+            </>
+        )
+    }
+
+    let reactRoot = ReactDOM.createRoot(root)
+    reactRoot.render(<App />)
+</script>
+
+</html>
